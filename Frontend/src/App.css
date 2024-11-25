@@ -174,7 +174,7 @@ nav {
 }
 
 .categories__grid {
-  max-width: var(--max-width-900);
+  max-width: var(--max-width-1000);
   margin: auto;
   margin-top: 4rem;
   display: grid;
@@ -361,7 +361,7 @@ nav {
 }
 
 .banner__container {
-  max-width: var(--max-width-900);
+  max-width: var(--max-width-1000);
   margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -396,7 +396,7 @@ nav {
 }
 
 .blog__grid {
-  max-width: var(--max-width-900);
+  max-width: var(--max-width-1000);
   margin: auto;
   margin-top: 4rem;
   display: grid;

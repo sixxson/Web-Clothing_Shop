@@ -1,7 +1,9 @@
 import delas from '../../../assets/deals.png'
+import Countdown from './CountDowns'
 
 
 export default function DealsSection() {
+
     return (
         <section className="section__container deals__container">
             <div className="deals__image    ">
@@ -12,11 +14,10 @@ export default function DealsSection() {
                 <h4>Deals of this Month</h4>
                 <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sequi aspernatur libero provident inventore, facilis ratione aliquam ab! Laudantium quidem iusto optio rem iure? Iusto,
-                    asperiores sunt. Eos repudiandae cum illo?
+                    asperiores sunt. Eos repudiandae cum illo?asdasdahdakshdjajkd
+                    asdaksdladk 
                 </p>
-            <div className='deals__countdown flex-wrap'>
-
-            </div>
+                <Countdown initialSeconds={3 * 24 * 60 * 60} />
             </div>
         </section>
     )
