@@ -1,4 +1,4 @@
-import { categories } from "../../../data";
+import { categories } from "../../data";
 
 export default function Categories() {
   return (

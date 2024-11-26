@@ -1,4 +1,4 @@
-import { blogs } from '../../../data'
+import { blogs } from "../../data";
 
 export default function Blogs() {
     return (

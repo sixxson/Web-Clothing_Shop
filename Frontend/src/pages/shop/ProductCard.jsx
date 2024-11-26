@@ -1,8 +1,8 @@
 
 import { Heart, ShoppingBag } from 'lucide-react'
 import { TbShoppingBagPlus } from 'react-icons/tb'
-import RatingStars from '../../RatingStars'
 import PropTypes from 'prop-types'
+import RatingStars from '../../components/RatingStars'
 
 export default function ProductCard({ products }) {    
     return (
@@ -13,7 +13,7 @@ export default function ProductCard({ products }) {
                         <a href={`/shop/${product.name}+${product.price}`}>
                             <img src={product.image} alt={product.name}
                                 className="max-h-96 md:h-64 w-full object-cover hover:scale-105
-                            transition-all duration-300" />
+                            transition-all duration-300 rounded-lg " />
                         </a>
                         <div className="pointer-events-none absolute top-3 right-3  translate-y-full opacity-0 transition-all 
                         duration-500 ease-in-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 flex flex-col gap-2">

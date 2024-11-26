@@ -1,7 +1,9 @@
 "use client"
 import {Search, ShoppingBagIcon, User2Icon} from 'lucide-react'
+import { useState } from 'react'
 
 export default function Navbar() {
+    const [showSearch, setShowSearch] = useState(false)
     return (
         <header className='fixed-nav-bar w-nav'>
             <nav className="max-w-screen mx-auto px-4 flex justify-between items-center">
@@ -18,9 +20,18 @@ export default function Navbar() {
                 {/* nav icon */}
                 <div className="nav__icons relative">
                     <span>
-                        <a className='flex items-center'>
+                        <a className='flex items-center cursor-pointer' onClick={() => setShowSearch(!showSearch)}>
                             <Search />
                         </a>
+                        {showSearch && (
+                            <div className="absolute left-14 top-0 w-64">
+                                <input 
+                                    type="text"
+                                    placeholder="Search products..."
+                                    className="w-full p-2 border rounded-md shadow-sm"
+                                />
+                            </div>
+                        )}
                     </span>
                     <span>
                         <button className='hover:text-primary relative'>

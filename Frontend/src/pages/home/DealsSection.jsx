@@ -1,4 +1,4 @@
-import delas from '../../../assets/deals.png'
+import delas from '../../assets/deals.png'
 import Countdown from './CountDowns'
 
 

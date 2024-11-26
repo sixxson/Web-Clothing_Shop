@@ -1,4 +1,4 @@
-import { cards } from "../../../data";
+import { cards } from "../../data";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero() {

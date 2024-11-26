@@ -1,70 +1,161 @@
-import { BsFacebook, BsInstagram, BsTwitterX } from "react-icons/bs";
+import { FaFacebook, FaInstagram, FaLocationDot, FaPhone, FaYoutube } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
+import ImageInstagram1 from '../assets/instagram-1.jpg'
+import ImageInstagram2 from '../assets/instagram-2.jpg'
+import ImageInstagram3 from '../assets/instagram-3.jpg'
+import ImageInstagram4 from '../assets/instagram-4.jpg'
+import ImageInstagram5 from '../assets/instagram-5.jpg'
+import ImageInstagram6 from '../assets/instagram-6.jpg'
+import { BsTwitterX } from "react-icons/bs";
 
 export default function Footer() {
+    const footerNavs = [
+        {
+            label: "Contact Info",
+            items: [
+                {
+                    name: '123 Main Street, New York, USA',
+                    icon: <FaLocationDot />,
+                },
+                {
+                    icon: <IoMail />,
+                    name: 'info@company.com',
+                },
+                {
+                    icon: <FaPhone />,
+                    name: '+1 123 456 7890',
+                },
+            ],
+        },
+        {
+            label: "Company",
+            items: [
+                {
+                    href: '/',
+                    name: 'Home'
+                },
+                {
+                    href: '/about',
+                    name: 'About'
+                },
+                {
+                    href: '/Contact',
+                    name: 'Work With Us'
+                },
+                {
+                    href: '/blog',
+                    name: 'Our  Blog'
+                },
+                {
+                    href: '/',
+                    name: 'Contact'
+                }
+            ],
+        },
+        {
+            label: "useful links",
+            items: [
+                {
+                    href: '#',
+                    name: 'Help'
+                },
+                {
+                    href: '#',
+                    name: 'Track My Order'
+                },
+                {
+                    href: '#',
+                    name: 'Men'
+                },
+                {
+                    href: '#',
+                    name: 'Women'
+                },
+                {
+                    href: '#',
+                    name: 'Kids'
+                }
+            ]
+        }
+    ]
     return (
-        <footer className="bg-white ">
-            <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-                <div className="md:flex md:justify-between">
-                    <div className="nav__logo">
-                        <a href="/"> Something <span>Same</span></a>
+        <footer className="text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8 ">
+            <div className="gap-6 justify-between md:flex items-center">
+                <div className="flex flex-col gap-3" >
+                    <div className="max-w-xs ">
+                        <div className="nav__logo">
+                            <a href="/"> Logo <span>SomeThing</span></a>
+                            <p className="leading-relaxed mt-2 text-[15px]">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                        <div>
-                            <h2 className="mb-6 text-sm font-semibold uppercase  ">Resources</h2>
-                            <ul className=" font-medium">
-                                <li className="mb-4">
-                                    <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
-                                </li>
-                                <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 className="mb-6 text-sm font-semibold uppercase  ">Follow us</h2>
-                            <ul className=" font-medium">
-                                <li className="mb-4">
-                                    <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Github</a>
-                                </li>
-                                <li>
-                                    <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Discord</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 className="mb-6 text-sm font-semibold uppercase  ">Legal</h2>
-                            <ul className=" font-medium">
-                                <li className="mb-4">
-                                    <a href="#" className="hover:underline">Privacy Policy</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="hover:underline">Terms &amp; Conditions</a>
-                                </li>
-                            </ul>
+                    <div className="footer__col">
+                        <div className="instagram__grid">
+                            <img src={ImageInstagram1} alt="" />
+                            <img src={ImageInstagram2} alt="" />
+                            <img src={ImageInstagram3} alt="" />
+                            <img src={ImageInstagram4} alt="" />
+                            <img src={ImageInstagram5} alt="" />
+                            <img src={ImageInstagram6} alt="" />
                         </div>
                     </div>
                 </div>
-                <hr className="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
-                <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-smsm:text-center ">© 2023 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. All Rights Reserved.
-                    </span>
-                    <div className="flex mt-4 sm:justify-center sm:mt-0">
-                        <a href="#" className="text-gray-500">
-                            <BsFacebook />
-                            <span className="sr-only">Facebook page</span>
-                        </a>
-                        <a href="#" className="text-gray-500 ms-5">
-                            <BsInstagram />
-                            <span className="sr-only">Instagram community</span>
-                        </a>
-                        <a href="#" className="text-gray-500 ms-5">
-                            <BsTwitterX />
-                            <span className="sr-only">Twitter page</span>
-                        </a>
-                    </div>
+                <div className="flex-1 footer__container">
+                    {
+                        footerNavs.map((item, idx) => (
+                            <div
+                                className="footer__col space-y-4"
+                                key={idx}
+                            >
+                                <h4 className="text-lg uppercase font-medium text-black">
+                                    {item.label}
+                                </h4>
+                                {
+                                    item.items.map(((el, idx) => (
+                                        <p key={idx}>
+                                            <a href={el.href} className="flex flex-row items-center gap-2">
+                                                <span>
+                                                    {el.icon}
+                                                </span>
+                                                {el.name}
+                                            </a>
+                                        </p>
+                                    )))
+                                }
+                            </div>
+                        ))
+                    }
+                </div>
+
+            </div>
+            <div className="mt-8 py-6 border-t items-center justify-between sm:flex">
+                <div className="mt-4 sm:mt-0">
+                    &copy; 2022 Float UI All rights reserved.
+                </div>
+                <div className="mt-6 sm:mt-0">
+                    <ul className="flex items-center space-x-4">
+                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                            <a href="#">
+                                <FaFacebook size={30} className="text-blue-600" />
+                            </a>
+                        </li>
+                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                            <a href="#">
+                                <FaInstagram size={35} className="rounded-lg bg-gradient-to-tr from-pink-500 to-orange-400 text-white" />
+                            </a>
+                        </li>
+                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                            <a href="#">
+                                <BsTwitterX size={25} className="text-black" />
+                            </a>
+                        </li>
+                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                            <a href="#">
+                                <FaYoutube size={30} className="text-red-600" />
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </footer>
-
     )
 }

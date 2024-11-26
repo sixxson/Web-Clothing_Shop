@@ -438,8 +438,8 @@ nav {
 .footer__container {
   max-width: var(--max-width-1200);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .footer__container h4 {
@@ -463,7 +463,6 @@ nav {
 }
 
 .footer__col a {
-  display: block;
   margin-bottom: 1rem;
   font-weight: 500;
   color: var(--text-light);
@@ -475,8 +474,8 @@ nav {
 
 .instagram__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, 0.3fr);
+  gap: 0.5rem;
 }
 
 .footer__bar {

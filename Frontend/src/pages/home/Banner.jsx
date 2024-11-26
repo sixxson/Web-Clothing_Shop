@@ -1,4 +1,4 @@
-import ImageBanner from '../../../assets/header.png'
+import ImageBanner from '../../assets/header.png'
 export default function Banner() {
   return (
     <section className="section__container header__container">

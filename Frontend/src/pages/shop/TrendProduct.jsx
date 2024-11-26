@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
-import { products } from "../../../data";
+import { products } from "../../data";
 
 export default function TrendProduct() {
   const [visibleProduct, setVisibleProduct] = useState(8);

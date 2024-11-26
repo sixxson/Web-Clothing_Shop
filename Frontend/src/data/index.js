@@ -6,35 +6,36 @@ import card1 from '../assets/card-1.png'
 import card2 from '../assets/card-2.png'
 import card3 from '../assets/card-3.png'
 
+
 export const categories = [
     {
-        name: 'category 1',
-        path: 'category 1',
+        name: 'accessories',
+        path: 'accessories',
         image: category1
     },
     {
-        name: 'category 2',
-        path: 'category 2',
+        name: 'dress',
+        path: 'dress',
         image: category2
     },
     {
-        name: 'category 3',
-        path: 'category 3',
+        name: 'jewellery',
+        path: 'jewellery',
         image: category3
     },
     {
-        name: 'category 4',
-        path: 'category 4',
+        name: 'cosmetics',
+        path: 'cosmetics',
         image: category4
     },
     {
-        name: 'category 5',
-        path: 'category 5',
+        name: 'T-shirt',
+        path: 'T-shirt',
         image: category1
     },
     {
-        name: 'category 6',
-        path: 'category 6',
+        name: 'Office Ministry',
+        path: 'Office Ministry',
         image: category2
     }
 ]
@@ -180,3 +181,4 @@ export const cards = [
         title: 'Women Casuuals',
     }
 ]
+
