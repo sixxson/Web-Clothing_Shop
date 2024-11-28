@@ -3,31 +3,44 @@ import { Heart, ShoppingBag } from 'lucide-react'
 import { TbShoppingBagPlus } from 'react-icons/tb'
 import PropTypes from 'prop-types'
 import RatingStars from '../../components/RatingStars'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { addToCart } from '../../redux/features/cart/cartSlice'
 
-export default function ProductCard({ products }) {    
+export default function ProductCard({ products }) {
+    const dispatch = useDispatch()
+
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+    }
+    
     return (
         <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {products.map((product, i) => (
                 <div key={i} className="product__card">
                     <div className='group relative  overflow-hidden'>
-                        <a href={`/shop/${product.name}+${product.price}`}>
+                        <Link to={`/shop/:${product._id}`}>
                             <img src={product.image} alt={product.name}
                                 className="max-h-96 md:h-64 w-full object-cover hover:scale-105
                             transition-all duration-300 rounded-lg " />
-                        </a>
+                        </Link>
                         <div className="pointer-events-none absolute top-3 right-3  translate-y-full opacity-0 transition-all 
                         duration-500 ease-in-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 flex flex-col gap-2">
-                            <button>
-                                <ShoppingBag size={35} className='r-shopping-cart-2-line bg-primary 
-                                p-1.5 text-white rounded-lg hover:bg-primary-dark'/>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleAddToCart(product)
+                                }}>
+                                <TbShoppingBagPlus size={35} className='r-shopping-cart-2-line bg-primary 
+                                p-1.5 text-white rounded-lg hover:bg-primary-dark' />
                             </button>
                             <button>
                                 <Heart size={35} className='r-shopping-cart-2-line bg-primary 
                                 p-1.5 text-white rounded-lg hover:bg-primary-dark' />
                             </button>
                             <button>
-                                <TbShoppingBagPlus size={35} className='r-shopping-cart-2-line bg-primary 
-                                p-1.5 text-white rounded-lg hover:bg-primary-dark' />
+                                <ShoppingBag size={35} className='r-shopping-cart-2-line bg-primary 
+                                p-1.5 text-white rounded-lg hover:bg-primary-dark'/>
                             </button>
                         </div>
                     </div>

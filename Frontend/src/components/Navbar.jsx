@@ -1,11 +1,14 @@
 "use client"
-import {Search, ShoppingBagIcon, User2Icon} from 'lucide-react'
-import { useState } from 'react'
+import { Search, ShoppingBagIcon, User2Icon } from 'lucide-react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
-    const [showSearch, setShowSearch] = useState(false)
+
+    const products = useSelector((state) => state.cart.products)
+    
     return (
-        <header className='fixed-nav-bar w-nav'>
+        <header className='fixed z-[100] w-full bg-primary-light '>
             <nav className="max-w-screen mx-auto px-4 flex justify-between items-center">
                 <ul className="nav__links">
                     <li className='hover:text-primary'><a href="/">Home</a></li>
@@ -20,24 +23,17 @@ export default function Navbar() {
                 {/* nav icon */}
                 <div className="nav__icons relative">
                     <span>
-                        <a className='flex items-center cursor-pointer' onClick={() => setShowSearch(!showSearch)}>
+                        <Link to='/search' className='flex items-center cursor-pointer' >
                             <Search />
-                        </a>
-                        {showSearch && (
-                            <div className="absolute left-14 top-0 w-64">
-                                <input 
-                                    type="text"
-                                    placeholder="Search products..."
-                                    className="w-full p-2 border rounded-md shadow-sm"
-                                />
-                            </div>
-                        )}
+                        </Link>
                     </span>
                     <span>
                         <button className='hover:text-primary relative'>
-                        <sup className='text-sm inline-block px-1.5 absolute left-4 text-white rounded-full
-                        bg-primary text-center'>0</sup>
-                        <ShoppingBagIcon className='mt-2' />
+                            <sup className='text-sm inline-block px-1.5 absolute left-4 text-white rounded-full
+                            bg-primary text-center'>
+                                {products.length}
+                            </sup>
+                            <ShoppingBagIcon className='mt-2' />
                         </button>
                     </span>
                     <span>

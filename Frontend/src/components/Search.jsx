@@ -1,16 +1,16 @@
 import { useState } from "react"
-import { products } from "../data"
+import { productData } from "../data"
 import { FaSearch } from "react-icons/fa";
 import ProductCard from "../pages/shop/ProductCard";
 
 export default function Search() {
     const [searchQuery, setSearchQuery] = useState('')
-    const [ fillteredProducts ,setFillteredProducts] = useState(products)
+    const [ fillteredProducts ,setFillteredProducts] = useState(productData)
 
     const handleSearch = () => {
         const query = searchQuery.toLowerCase()
 
-        const filltered = products.filter(
+        const filltered = productData.filter(
             (product) => product.name.toLowerCase().includes(query)
                 || product.description.toLowerCase().includes(query)
                 || product.category.toLowerCase().includes(query)

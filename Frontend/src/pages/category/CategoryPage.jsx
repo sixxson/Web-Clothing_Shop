@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { products } from "../../data"
+import { productData } from "../../data"
 import ProductCard from "../shop/ProductCard"
 
 export default function CategoryPage() {
@@ -8,7 +8,7 @@ export default function CategoryPage() {
     const [fillteredProducts, setFillteredProducts] = useState([])
 
     useEffect(() => {
-        const filltered = products.filter((product) => product.category === categoryName.toLowerCase());
+        const filltered = productData.filter((product) => product.category === categoryName.toLowerCase());
         setFillteredProducts(filltered)
     }, [categoryName, setFillteredProducts])
 

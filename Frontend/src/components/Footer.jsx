@@ -135,22 +135,22 @@ export default function Footer() {
                     <ul className="flex items-center space-x-4">
                         <li className="w-10 h-10 border rounded-full flex items-center justify-center">
                             <a href="#">
-                                <FaFacebook size={30} className="text-blue-600" />
+                                <FaFacebook size={20} className="text-blue-600" />
                             </a>
                         </li>
                         <li className="w-10 h-10 border rounded-full flex items-center justify-center">
                             <a href="#">
-                                <FaInstagram size={35} className="rounded-lg bg-gradient-to-tr from-pink-500 to-orange-400 text-white" />
+                                <FaInstagram size={20} className="rounded-lg bg-gradient-to-tr from-pink-500 to-orange-400 text-white" />
                             </a>
                         </li>
                         <li className="w-10 h-10 border rounded-full flex items-center justify-center">
                             <a href="#">
-                                <BsTwitterX size={25} className="text-black" />
+                                <BsTwitterX size={20} className="text-black" />
                             </a>
                         </li>
                         <li className="w-10 h-10 border rounded-full flex items-center justify-center">
                             <a href="#">
-                                <FaYoutube size={30} className="text-red-600" />
+                                <FaYoutube size={20} className="text-red-600" />
                             </a>
                         </li>
                     </ul>

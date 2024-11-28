@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
-import { products } from "../../data";
+import { productData } from "../../data";
 
 export default function TrendProduct() {
   const [visibleProduct, setVisibleProduct] = useState(8);
@@ -22,11 +22,11 @@ export default function TrendProduct() {
       </p>
       {/* products card */}
       <div className="mt-12">
-        <ProductCard products={products.slice(0, visibleProduct)} />
+        <ProductCard products={productData.slice(0, visibleProduct)} />
       </div>
       {/* load more product button */}
       <div className="mt-12 flex justify-center">
-        {visibleProduct < products.length && (
+        {visibleProduct < productData.length && (
           <button onClick={loadMoreProduct} className='btn'>
             Load More
           </button>

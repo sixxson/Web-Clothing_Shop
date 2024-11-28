@@ -75,7 +75,7 @@ body {
 nav {
   max-width: var(--max-width-1200);
   margin: auto;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
