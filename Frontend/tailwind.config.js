@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       maxWidth: {
-        'screen-2xl': '1400px', 
-        'custom-1200': '1200px', 
-        'custom-900': '900px', 
+        'screen-2xl': '1400px',
+        'custom-1200': '1200px',
+        'custom-900': '900px',
       },
       colors: {
         'primary': '#ed3849',
@@ -21,6 +21,7 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    import("flowbite-react/tailwind")
+  ]
 }
-

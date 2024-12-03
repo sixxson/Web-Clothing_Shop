@@ -26,7 +26,12 @@
   margin: auto;
   padding: 5rem 1rem;
 }
-
+.inline__bg{
+  background: url('../public/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;  
+  background-position: center;
+}
 .section__header {
   margin-bottom: 1rem;
   font-size: 2rem;

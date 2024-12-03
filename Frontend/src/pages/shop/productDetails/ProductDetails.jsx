@@ -2,11 +2,17 @@ import { ChevronRight, ShoppingBag, ShoppingCart } from 'lucide-react'
 import { productData } from '../../../data'
 import RatingStars from '../../../components/RatingStars'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../../redux/features/cart/cartSlice'
 
 export default function ProductDetails() {
+    const dispatch = useDispatch()
     const { _id } = useParams()
-    const product = productData.find(item => item._id === _id)
-    
+    const product = productData.find(product => product._id === _id)
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+    }
+
     return (
         <>
             {/* header Pages */}
@@ -38,30 +44,39 @@ export default function ProductDetails() {
                                 price: $ {product.price}
                             </strong>
                         </p>
-                        <p className='text-gray-500 mb-4'>
-                            {product.description}
-                        </p>
-                        <div className='flex flex-col gap-2'>
+
+                        <div className='flex flex-col gap-2' >
                             <p>
                                 <strong>
                                     Category:
                                 </strong>
                                 {product.category}
                             </p>
-                            <p>
-                                <strong>
-                                    Color:
-                                </strong>
-                                <span className="w-5 h-5 rounded-md border border-gray-600"
-                                    style={{ backgroundColor: product.color }}></span>
-                            </p>
+                            <div className='flex items-center gap-2'>
+                                <p>
+                                    <strong>
+                                        Color:
+                                    </strong>
+                                </p>
+                                <div className='w-10 h-10 rounded-lg'
+                                    style={{ backgroundColor: `${product.color}` }}></div>
+
+                            </div>
                             <div className='flex items-center gap-5'>
                                 <strong>Ratings</strong>
                                 <RatingStars rating={4} />
                             </div>
+                            <p className='text-gray-500 mb-4'>
+                                {product.description}
+                            </p>
                         </div>
                         <div className='flex gap-8'>
-                            <button className='bg-primary-light text-primary hover:bg-primary-dark 
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleAddToCart(product)
+                                }}
+                                className='bg-primary-light text-primary hover:bg-primary-dark 
                             hover:text-white font-semibold capitalize flex gap-2 items-center transition-all duration-300 py-2 rounded-md px-4 '>
                                 <ShoppingCart />
                                 add to cart

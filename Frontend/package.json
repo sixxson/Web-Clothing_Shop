@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+    "flowbite": "^2.5.2",
+    "flowbite-react": "^0.10.2",
     "lucide": "^0.460.0",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",

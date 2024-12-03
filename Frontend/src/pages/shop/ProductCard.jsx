@@ -19,7 +19,7 @@ export default function ProductCard({ products }) {
             {products.map((product, i) => (
                 <div key={i} className="product__card">
                     <div className='group relative  overflow-hidden'>
-                        <Link to={`/shop/:${product._id}`}>
+                        <Link to={`/shop/${product._id}`}>
                             <img src={product.image} alt={product.name}
                                 className="max-h-96 md:h-64 w-full object-cover hover:scale-105
                             transition-all duration-300 rounded-lg " />
