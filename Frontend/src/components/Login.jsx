@@ -1,49 +1,43 @@
 import { useState } from "react";
 import InputForm from "./InputForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../redux/features/auths/AuthApi";
+import { setUser } from "../redux/features/auths/authSlice";
 
 export default function Login() {
 
-    const [message] = useState("")
+    const [message, setMessage] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loginUser] = useLoginMutation()
+    const navigator = useNavigate()
+    const dispatch = useDispatch()
+
+    // handle Login
     const handleLogin = async (e) => {
         e.preventDefault();
         const data = {
             email,
             password
         };
-        console.log(data);
+        try {
+            const reponese = await loginUser(data).unwrap();
+            const { token, user } = reponese
+            dispatch(setUser({ token, user }));
+            alert("Login Successfully");
+            navigator("/");
 
-        // try {
-        //     const response = await fetch("http://localhost:3000/login", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             email,
-        //             password,
-        //         }),
-        //     });
-        //     const data = await response.json();
-        //     if (data.error) {
-        //         setMessage(data.error);
-        //     } else {
-        //         setMessage(data.message);
-        //     }
-        // } catch (error) {
-        //     console.log(
-        //         "Error:",
-        //         error
-        //     );
-        // }
+        } catch (error) {
+            console.error(error);
+            setMessage("Something went wrong");
+        }
+
     }
     return (
         <div className="pt-20 ">
-            <div className="min-w-[1200px] grid md:grid-cols-2 grid-cols-1 w-full gap-5
-            max-w-5xl mx-auto p-4 border border-gray-200 rounded-lg shadow sm:p-6
-            md:p-8">
+            <div className="lg:min-w-[1200px] md:px-5 grid md:grid-cols-2 grid-cols-1 w-full gap-5
+    max-w-5xl md:mx-auto">
                 <div className='hidden md:flex inline__bg rounded-lg'>
                     {/* image */}
                 </div>
@@ -51,7 +45,7 @@ export default function Login() {
                     {/* form */}
                     <form
                         onSubmit={handleLogin}
-                        className="space-y-6 grid grid-rows-2 w-2/3 mx-auto" action="POST">
+                        className="space-y-6 grid grid-rows-2 p-8 w-full sm:p-4 pt-20 " action="POST">
                         <div className="nav__logo text-center">
                             <a href="/"> Something <span>Same</span></a>
                             <h1 className="mt-2 text-3xl font-bold font-serif">Please <span className="text-red-500">Login</span> </h1>
@@ -59,8 +53,13 @@ export default function Login() {
                         </div>
                         <InputForm required={true} label="Email" type="email" name="email"
                             placeholder="example@gmail.com" onChange={(e) => setEmail(e.target.value)} />
-                        <InputForm required={true} label="Password" type="password" name="password"
-                            placeholder="••••••••" onChange={(e) => setPassword(e.target.value)} />
+                        <InputForm
+                            required={true}
+                            label="Password"
+                            type="password"
+                            name="password"
+                            placeholder="••••••••"
+                            onChange={(e) => setPassword(e.target.value)} />
                         {message && <p className="text-red-500">{message}</p>}
                         <div className="flex items-start">
                             <div className="flex items-start">

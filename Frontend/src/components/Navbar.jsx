@@ -1,13 +1,36 @@
-import { Search, ShoppingBasket, User2Icon } from 'lucide-react'
+import { ArrowRight, ChevronDown, Search, ShoppingBasket } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import ComponentCart from '../pages/shop/ComponentCart'
+import { userDropDownMenus, adminDropDownMenus } from '../utils/baseUrl'
+import { logout } from '../redux/features/auths/authSlice'
+import { useLogoutMutation } from '../redux/features/auths/AuthApi'
 
 export default function Navbar() {
 
+    const dispatch = useDispatch()
+    const products = useSelector((state) => state.cart.products)
+    const { user } = useSelector((state) => state.auth)
     const [isScrolled, setIsScrolled] = useState(false);
-
+    const [isOpenCart, setIsOpenCart] = useState(false)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Trạng thái mở/đóng menu
+    const [logoutUser] = useLogoutMutation()
+    const navigator = useNavigate()
+    const dropdownMenus = user?.role === 'admin' ? [...adminDropDownMenus] : [...userDropDownMenus]
+    console.log(user);
+    
+    const handleCartToggle = () => { setIsOpenCart(!isOpenCart) }
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen); // Toggle trạng thái
+    const handleLogout = async () => {
+        try {
+            await logoutUser().unwrap()
+            dispatch(logout())
+            navigator('/')
+        } catch (error) {
+            console.error("Failed to logout:", error);
+        }
+    }
     // Xử lý sự kiện cuộn trang
     useEffect(() => {
         const handleScroll = () => {
@@ -25,12 +48,6 @@ export default function Navbar() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
-    const products = useSelector((state) => state.cart.products)
-    const [isOpenCart, setIsOpenCart] = useState(false)
-    const handleCartToggle = () => {
-        setIsOpenCart(!isOpenCart)
-    }
 
     return (
         <header className={`fixed z-[100] w-full  ${isScrolled ? "bg-primary-light" : "bg-none"} transition-all duration-300 ease-in-out `}>
@@ -64,15 +81,49 @@ export default function Navbar() {
                         </button>
                     </span>
                     <span>
-                        <a href="/login">
-                            <User2Icon />
-                        </a>
+                        {user && user
+                            ? (
+                                <div className='relative'>
+                                    <div onClick={toggleDropdown}
+                                        className={` flex items-center cursor-pointer ${isDropdownOpen ? "bg-slate-100" : "bg-slate-50/30"
+                                            }`}>
+                                        <img src={user?.profileImage} className='w-10 h-10 rounded-full object-cover'
+                                            alt="" />
+                                        <ChevronDown size={20}
+                                            className={`transform transition-transform ${isDropdownOpen ? "rotate-180" : ""
+                                                }`} />
+                                    </div>
+                                    {
+                                        dropdownMenus && (
+                                            <div className={`absolute bg-white p-4 right-0 mt-3 rounded-lg ${isDropdownOpen ? "flex" : "hidden"
+                                                }`}>
+                                                <ul className='space-y-2 w-48'>
+                                                    {dropdownMenus.map((menu, index) => (
+                                                        <li key={index} className='hover:text-primary hover:bg-primary-light rounded-lg p-1'>
+                                                            <Link
+                                                                onClick={() => setIsDropdownOpen(false)}
+                                                                className='dropdown-items' to={menu.path}>{menu.lable}</Link>
+                                                        </li>
+                                                    ))}
+                                                    <li>
+                                                        <Link onClick={handleLogout} className='dropdown-items' >Logout</Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            )
+                            : (<Link to="/login" className='flex items-center text-lg '>
+                                Login <ArrowRight size={20} />
+                            </Link>)
+                        }
                     </span>
                 </div>
             </nav>
             {isOpenCart &&
-                    <ComponentCart products={products} isOpen={isOpenCart} isClose={handleCartToggle} />
+                <ComponentCart products={products} isOpen={isOpenCart} isClose={handleCartToggle} />
             }
         </header>
-    )
+    );
 }
