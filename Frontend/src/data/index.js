@@ -136,7 +136,7 @@ export const productData = [
     },    
     {
         _id:"10",
-        name: "Casual Pants",
+        name: " ",
         category: "dress",
         description: "Comfortable maxi dress for casual outings.",
         price: 59.99,
