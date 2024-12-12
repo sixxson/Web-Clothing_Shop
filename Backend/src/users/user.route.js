@@ -93,7 +93,7 @@ router.post("/logout", async (req, res) => {
 })
 
 // dellete user 
-router.delete("/users/:id", async (req, res) => {
+router.delete("/user/:id", async (req, res) => {
     try {
         const { id } = req.params
         const user = await User.findByIdAndDelete(id)
@@ -114,7 +114,7 @@ router.delete("/users/:id", async (req, res) => {
 })
 
 //all user 
-router.get("/users", async (req, res, next) => {
+router.get("/user", async (req, res, next) => {
     try {
         const users = await User.find({}, "id email role").sort({ createdAt: -1 })
         res.status(200).json({
@@ -131,7 +131,7 @@ router.get("/users", async (req, res, next) => {
 })
 
 // update user
-router.put("/users/:id", async (req, res) => {
+router.put("/update-user/:id", async (req, res) => {
     try {
         const { id } = req.params
         const { email, password, role } = req.body

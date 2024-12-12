@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const app = express();
-const post = process.env.POST || 5000;
+const post = process.env.Post_SomethingBrand || 5000;
 
 
 //middleware setup
@@ -25,7 +25,7 @@ app.use((err, req, res, next) => {
 
 // Update CORS to match your frontend URL exactly
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
     credentials: true,
 }));
 
