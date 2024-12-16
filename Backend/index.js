@@ -25,7 +25,7 @@ app.use((err, req, res, next) => {
 
 // Update CORS to match your frontend URL exactly
 app.use(cors({
-origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+origin: [process.env.VITE_Frontend_URL],
     credentials: true,
 }));
 
