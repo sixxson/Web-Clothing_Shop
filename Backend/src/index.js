@@ -30,8 +30,8 @@ origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
 }));
 
 // all routes
-const authRoutes = require('./src/users/user.route');
-const productRoutes = require('./src/products/product.route')
+const authRoutes = require('./users/user.route');
+const productRoutes = require('./products/product.route')
 app.use('/api/auth', authRoutes);
 app.use('/api/product',productRoutes)
 
