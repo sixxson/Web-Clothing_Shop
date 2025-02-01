@@ -75,7 +75,9 @@ export const productsApi = createApi({
                 credentials: 'include'
             }),
             invalidatesTags: (result, error, id) => [{ type: 'Products', id }]
-        })
+        }),
+
+
     })
 })
 
@@ -85,6 +87,6 @@ export const {
     useFetchRelatedProductQuery,
     useAddProductMutation,
     useUpdateProductMutation,
-    useDeleteProductMutation
+    useDeleteProductMutation,
 } = productsApi
 export default productsApi
